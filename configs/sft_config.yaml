@@ -1,0 +1,26 @@
+# AbArk RLHF Pipeline — SFT Config
+# Usage: python scripts/run_sft.py --config configs/sft_config.yaml
+
+base_model: "meta-llama/Llama-3.2-1B"
+output_dir: "./outputs/sft_model"
+dataset_path: "data/sft_data.jsonl"
+
+# Training
+num_train_epochs: 2
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+learning_rate: 2.0e-4
+max_seq_length: 512
+val_ratio: 0.05
+seed: 42
+packing: true
+
+# LoRA
+use_lora: true
+lora_r: 64
+lora_alpha: 128
+lora_dropout: 0.05
+
+# Logging
+use_wandb: false
+wandb_project: "abark-rlhf"

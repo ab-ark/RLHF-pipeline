@@ -1,0 +1,23 @@
+# AbArk RLHF Pipeline — DPO Config
+# Usage: python scripts/run_dpo.py --config configs/dpo_config.yaml
+
+base_model: "./outputs/sft_model"   # Start from SFT checkpoint
+output_dir: "./outputs/dpo_model"
+dataset_path: "data/preferences.jsonl"
+
+beta: 0.1
+num_train_epochs: 1
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 8
+learning_rate: 5.0e-6
+max_length: 512
+max_prompt_length: 256
+val_ratio: 0.1
+seed: 42
+
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+
+use_wandb: false
+wandb_project: "abark-rlhf"
